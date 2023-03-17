@@ -8,6 +8,7 @@ namespace Tank.Aditya
     {
         public float moveSpeed;
         public float aliveTime;
+        public static bool isKill = false;
 
         private void Start()
         {
@@ -24,6 +25,7 @@ namespace Tank.Aditya
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            isKill = true;
         }
         //private void OnCollisionEnter2D(Collision2D collision)
         //{

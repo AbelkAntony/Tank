@@ -8,7 +8,7 @@ namespace Tank.Aditya
     public class PlayerController : MonoBehaviour
     {
         // movement
-        public float moveSpeed = 600f;
+        public float playerMoveSpeed = 600f;
         private float moveDirection;
 
         // shooting
@@ -20,7 +20,7 @@ namespace Tank.Aditya
         public RestartButtonController restart;
 
         public int life;
-
+        private int score;
         public static bool alive;
 
         private void Start()
@@ -34,6 +34,10 @@ namespace Tank.Aditya
         {
             Movement();
             Shooting();
+            if(BulletController.isKill == true)
+            {
+                UpdateScore();
+            }
         }
 
         private void Shooting()
@@ -48,7 +52,7 @@ namespace Tank.Aditya
         {
             moveDirection = Input.GetAxisRaw("Horizontal");
             //transform.RotateAround(Vector3.zero, Vector3.forward, -moveDirection * Time.deltaTime * moveSpeed);
-            transform.eulerAngles += Vector3.forward * -moveDirection * moveSpeed * Time.deltaTime;
+            transform.eulerAngles += Vector3.forward * -moveDirection * playerMoveSpeed * Time.deltaTime;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -63,5 +67,13 @@ namespace Tank.Aditya
                 restart.SetRestart();
             }
         }
+        public void UpdateScore()
+        {
+            Debug.Log("UpdateScore");
+            score = score+1;
+            BulletController.isKill = false;
+            Debug.Log(score.ToString());
+        }
+        
     }
 }
