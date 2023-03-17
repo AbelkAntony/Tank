@@ -17,6 +17,8 @@ namespace Tank.Aditya
 
         public int life;
 
+        private static bool alive = true;
+
         private void Update()
         {
             Movement();
@@ -42,6 +44,12 @@ namespace Tank.Aditya
         {
             Destroy(collision.gameObject);
             life--;
+            if(life < 1)
+            {
+                Time.timeScale = 0;
+                alive = false;
+                
+            }
         }
     }
 }

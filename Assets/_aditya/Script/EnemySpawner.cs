@@ -8,14 +8,53 @@ namespace Tank.Aditya
     {
         public EnemyController enemyPrefab;
         public Transform player;
-
+        private Vector3 randomPosition;
+        private int choice;
+        private float timer = 0;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                EnemyController enemy = Instantiate(enemyPrefab, transform.position, transform.rotation);
+                choice = Random.Range(0, 4);
+                if(choice == 0 || choice == 1)
+                {
+                    HorizontalSpawn();
+                }
+                else
+                {
+                    VerticalSpawn();
+                }
+                EnemyController enemy = Instantiate(enemyPrefab, randomPosition , transform.rotation);
                 enemy.player = player;
             }
+        }
+        private void HorizontalSpawn()
+        {
+            float x = Random.Range(0, 2);
+            if(x==0)
+            {
+                x = -4f; 
+            }
+            else
+            {
+                x = 4f;
+            }
+            float y = Random.Range(-6f, 6f);
+            randomPosition = new (x, y, 0);
+        }
+        private void VerticalSpawn()
+        {
+            float y = Random.Range(0, 2);
+            if(y==0)
+            {
+                y = -6f;
+            }
+            else
+            {
+                y = 6f;
+            }
+            float x = Random.Range(-4f, 4f);
+            randomPosition = new(x, y, 0);
         }
     }
 }
