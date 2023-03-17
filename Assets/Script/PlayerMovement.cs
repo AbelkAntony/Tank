@@ -9,11 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 600f;
     void Update()
     {
-        moveDirection = Input.GetAxis("Horizontal");
+        moveDirection = Input.GetAxisRaw("Horizontal");
+        transform.RotateAround(Vector3.zero, Vector3.forward, -moveDirection * Time.deltaTime * moveSpeed);
     }
 
-    private void FixedUpdate()
-    {
-        transform.RotateAround(Vector3.zero, Vector3.forward, moveDirection * Time.fixedDeltaTime * moveSpeed);
-    }
+    
 }
