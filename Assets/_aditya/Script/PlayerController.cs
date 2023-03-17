@@ -22,6 +22,7 @@ namespace Tank.Aditya
         public UiControllerScore uiScore;
         public UiControllerLife uiLife;
 
+
         public int life;
         private int score;
         public static bool alive;

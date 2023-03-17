@@ -22,10 +22,10 @@ namespace Tank.Aditya
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
-        {
-            Destroy(collision.gameObject);
+        { 
+            //Destroy(collision.gameObject);
             Destroy(gameObject);
-            isKill = true;
+            
         }
         //private void OnCollisionEnter2D(Collision2D collision)
         //{

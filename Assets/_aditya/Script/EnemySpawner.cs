@@ -28,6 +28,8 @@ namespace Tank.Aditya
                 }
                 EnemyController enemy = Instantiate(enemyPrefab, randomPosition , transform.rotation);
                 enemy.player = player;
+                int value = Random.Range(1, 4);
+                enemy.SetEnemyLife(value);
             }
         }
         private void HorizontalSpawn()
