@@ -11,12 +11,14 @@ namespace Tank.Aditya
         private Vector3 randomPosition;
         private int choice;
         private float timer = 0;
+        private float spawnDuration = 3 ;
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Time.time > timer)
             {
-                choice = Random.Range(0, 4);
-                if(choice == 0 || choice == 1)
+                timer = Time.time + spawnDuration;
+                choice = Random.Range(0, 2);
+                if(choice == 0)
                 {
                     HorizontalSpawn();
                 }
