@@ -15,9 +15,20 @@ namespace Tank.Aditya
         public BulletController bulletPrefab;
         public Transform gunPoint;
 
+        //ui
+        public GameOverController gameOver;
+        public RestartButtonController restart;
+
         public int life;
 
-        private static bool alive = true;
+        public static bool alive;
+
+        private void Start()
+        {
+            alive = true;
+            gameOver.SetGameOver();
+            restart.SetRestart();
+        }
 
         private void Update()
         {
@@ -46,9 +57,10 @@ namespace Tank.Aditya
             life--;
             if(life < 1)
             {
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 alive = false;
-                
+                gameOver.SetGameOver();
+                restart.SetRestart();
             }
         }
     }
