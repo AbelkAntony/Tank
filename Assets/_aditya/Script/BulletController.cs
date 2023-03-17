@@ -6,8 +6,8 @@ namespace Tank.Aditya
 {
     public class BulletController : MonoBehaviour
     {
-        public float moveSpeed;
-        public float aliveTime;
+        [SerializeField]private float moveSpeed;
+        [SerializeField] private float aliveTime;
         public static bool isKill = false;
 
         private void Start()

@@ -8,13 +8,13 @@ namespace Tank.Aditya
     public class EnemyController : MonoBehaviour
     {
         private int enemyLife;
-        public Transform player;
-        public float moveSpeed;
-
+        [SerializeField] private GameObject player;
+        [SerializeField] private float moveSpeed;
+        [SerializeField] private PlayerController _player;
         // Update is called once per frame
         void Update()
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
 
         public void SetEnemyLife(int value)
@@ -29,7 +29,7 @@ namespace Tank.Aditya
             if(GetEnemyLife()<0)
             {
                 Destroy(gameObject);
-                BulletController.isKill = true;
+                _player.UpdateScore();
             }
         }
         public void UpdateEnemyLife()
@@ -39,6 +39,14 @@ namespace Tank.Aditya
         public int GetEnemyLife()
         {
             return enemyLife;
+        }
+        public void SetPlayer(GameObject _player)
+        {
+            player = _player;
+        }
+        public void SetPlayerScore(PlayerController player)
+        {
+            _player = player;
         }
     }
 }

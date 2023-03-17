@@ -8,16 +8,12 @@ namespace Tank.Aditya
     public class RestartButtonController : MonoBehaviour
     {
         // Start is called before the first frame update
-        public void SetRestart()
+        public void SetRestart(bool value)
         {
-            if(PlayerController.alive == true)
+            gameObject.SetActive(value);
+            if(value)
             {
-                gameObject.SetActive(false);
-            }
-            else if(PlayerController.alive == false)
-            {
-                gameObject.SetActive(true);
-                Time.timeScale = 0;
+                Time.timeScale = 0; 
             }
         }
         public void NewGame()

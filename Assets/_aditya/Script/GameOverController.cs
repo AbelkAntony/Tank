@@ -7,16 +7,9 @@ namespace Tank.Aditya
     public class GameOverController : MonoBehaviour
     {
        
-        public void SetGameOver()
+        public void SetGameOver(bool value)
         {
-            if(PlayerController.alive == true)
-            {
-                gameObject.SetActive(false); 
-            }
-            else if(PlayerController.alive == false)
-            {
-                gameObject.SetActive(true);
-            }
+            gameObject.SetActive(value);           
         }
     }
 }

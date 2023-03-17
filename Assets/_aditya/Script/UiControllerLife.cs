@@ -7,7 +7,7 @@ namespace Tank.Aditya
 {
     public class UiControllerLife : MonoBehaviour
     {
-        public Text lifeCount;
+        [SerializeField] private Text lifeCount;
         
         public void UpdateLife(int life)
         {

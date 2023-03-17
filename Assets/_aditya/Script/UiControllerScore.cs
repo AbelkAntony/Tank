@@ -8,7 +8,7 @@ namespace Tank.Aditya
     public class UiControllerScore : MonoBehaviour
     {
 
-        public Text ScoreCount;
+        [SerializeField] private Text ScoreCount;
         public void UpdateScore(int score)
         {
             ScoreCount.text = score.ToString();

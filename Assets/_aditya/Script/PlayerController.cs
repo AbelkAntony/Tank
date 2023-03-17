@@ -9,32 +9,31 @@ namespace Tank.Aditya
     public class PlayerController : MonoBehaviour
     {
         // movement
-        public float playerMoveSpeed = 600f;
+        [SerializeField] private float playerMoveSpeed = 600f;
         private float moveDirection;
 
         // shooting
-        public BulletController bulletPrefab;
-        public Transform gunPoint;
+        [SerializeField] private BulletController bulletPrefab;
+        [SerializeField] private Transform gunPoint;
 
         //ui
-        public GameOverController gameOver;
-        public RestartButtonController restart;
-        public UiControllerScore uiScore;
-        public UiControllerLife uiLife;
+        [SerializeField] private GameOverController gameOver;
+        [SerializeField] private RestartButtonController restart;
+        [SerializeField] private UiControllerScore uiScore;
+        [SerializeField] private UiControllerLife uiLife;
 
 
-        public int life;
+        [SerializeField] private int life;
         private int score;
-        public static bool alive;
+        private bool alive;
 
         private void Start()
         {
             Time.timeScale = 1;
             uiLife.UpdateLife(life);
             uiScore.UpdateScore(score);
-            alive = true;
-            gameOver.SetGameOver();
-            restart.SetRestart();
+            gameOver.SetGameOver(false);
+            restart.SetRestart(false);
             
         }
 
@@ -71,9 +70,8 @@ namespace Tank.Aditya
             if (life < 1)
             {
                 //Time.timeScale = 0;
-                alive = false;
-                gameOver.SetGameOver();
-                restart.SetRestart();
+                gameOver.SetGameOver(true);
+                restart.SetRestart(true);
             }
         }
         public void UpdateScore()

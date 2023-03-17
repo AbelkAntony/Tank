@@ -6,8 +6,9 @@ namespace Tank.Aditya
 {
     public class EnemySpawner : MonoBehaviour
     {
-        public EnemyController enemyPrefab;
-        public Transform player;
+        [SerializeField] private EnemyController enemyPrefab;
+        [SerializeField] private GameObject player;
+        [SerializeField] private PlayerController _player;
         private Vector3 randomPosition;
         private int choice;
         private float timer = 0;
@@ -27,9 +28,10 @@ namespace Tank.Aditya
                     VerticalSpawn();
                 }
                 EnemyController enemy = Instantiate(enemyPrefab, randomPosition , transform.rotation);
-                enemy.player = player;
+                enemy.SetPlayer(player);
                 int value = Random.Range(1, 4);
                 enemy.SetEnemyLife(value);
+                enemy.SetPlayerScore(_player);
             }
         }
         private void HorizontalSpawn()
