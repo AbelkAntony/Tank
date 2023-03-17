@@ -25,7 +25,6 @@ namespace Tank.Aditya
 
         [SerializeField] private int life;
         private int score;
-        private bool alive;
 
         private void Start()
         {
