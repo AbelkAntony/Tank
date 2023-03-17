@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tank.Aditya
 {
@@ -18,6 +19,8 @@ namespace Tank.Aditya
         //ui
         public GameOverController gameOver;
         public RestartButtonController restart;
+        public UiControllerScore uiScore;
+        public UiControllerLife uiLife;
 
         public int life;
         private int score;
@@ -25,9 +28,13 @@ namespace Tank.Aditya
 
         private void Start()
         {
+            Time.timeScale = 1;
+            uiLife.UpdateLife(life);
+            uiScore.UpdateScore(score);
             alive = true;
             gameOver.SetGameOver();
             restart.SetRestart();
+            
         }
 
         private void Update()
@@ -59,7 +66,8 @@ namespace Tank.Aditya
         {
             Destroy(collision.gameObject);
             life--;
-            if(life < 1)
+            uiLife.UpdateLife(life);
+            if (life < 1)
             {
                 //Time.timeScale = 0;
                 alive = false;
@@ -69,10 +77,9 @@ namespace Tank.Aditya
         }
         public void UpdateScore()
         {
-            Debug.Log("UpdateScore");
             score = score+1;
+            uiScore.UpdateScore(score);
             BulletController.isKill = false;
-            Debug.Log(score.ToString());
         }
         
     }

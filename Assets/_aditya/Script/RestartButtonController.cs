@@ -17,6 +17,7 @@ namespace Tank.Aditya
             else if(PlayerController.alive == false)
             {
                 gameObject.SetActive(true);
+                Time.timeScale = 0;
             }
         }
         public void NewGame()
